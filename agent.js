@@ -565,6 +565,62 @@ app.get('/peers', async (req, res) => {
   }
 });
 
+// POST /peers/add - Add peer (HTTP)
+app.post('/peers/add', async (req, res) => {
+  try {
+    const { publicKey, allowedIPs } = req.body || {};
+    if (!publicKey) {
+      return res.status(400).json({
+        success: false,
+        message: 'publicKey is required'
+      });
+    }
+
+    const result = await addPeer(publicKey, allowedIPs);
+    if (!result.success) {
+      return res.status(500).json({
+        success: false,
+        message: result.error || 'Failed to add peer'
+      });
+    }
+
+    return res.json({ success: true, message: 'Peer added' });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+// POST /peers/remove - Remove peer (HTTP)
+app.post('/peers/remove', async (req, res) => {
+  try {
+    const { publicKey } = req.body || {};
+    if (!publicKey) {
+      return res.status(400).json({
+        success: false,
+        message: 'publicKey is required'
+      });
+    }
+
+    const result = await removePeer(publicKey);
+    if (!result.success) {
+      return res.status(500).json({
+        success: false,
+        message: result.error || 'Failed to remove peer'
+      });
+    }
+
+    return res.json({ success: true, message: 'Peer removed' });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
 // GET /service - Get service status
 app.get('/service', async (req, res) => {
   try {
