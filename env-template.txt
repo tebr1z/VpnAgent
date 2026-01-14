@@ -1,0 +1,18 @@
+# Backend URL (where the main server is running)
+BACKEND_URL=http://localhost:5000
+
+# Server ID from MongoDB (required)
+# Get this from the admin panel -> Servers page -> Copy the server ID
+SERVER_ID=your-server-id-here
+
+# Agent HTTP server port (optional, default: 3001)
+AGENT_PORT=3001
+
+# Optional: API Key for authentication
+# API_KEY=your-api-key-here
+
+# Optional: WebSocket URL for real-time commands
+# WS_URL=http://localhost:5000
+
+
+

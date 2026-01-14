@@ -1,0 +1,20 @@
+{
+  "name": "vexira-vpn-agent",
+  "version": "1.0.0",
+  "description": "WireGuard VPN Server Agent for Linux",
+  "main": "agent.js",
+  "scripts": {
+    "start": "node agent.js",
+    "dev": "node agent.js"
+  },
+  "keywords": ["wireguard", "vpn", "agent"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "ws": "^8.14.2"
+  }
+}
+
